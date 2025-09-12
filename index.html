@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart KRA Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2f3;
+      padding: 30px;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    h2 {
+      text-align: center;
+    }
+    .result {
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 15px;
+      color: #2e7d32;
+    }
+    .switch-btn {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      border-radius: 5px;
+    }
+    .switch-btn.active {
+      background-color: #28a745;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Talk Time & KRA Calculator</h2>
+
+    <button id="toggleBtn" class="switch-btn" onclick="toggleMode()">Switch to Manual Talk Time</button>
+
+    <div id="autoMode">
+      <label>Calls Handled:</label>
+      <input type="number" id="calls" placeholder="e.g. 65" />
+
+      <label>Avg Talk Time:</label>
+      <input type="number" id="minutes" placeholder="Minutes" />
+      <input type="number" id="seconds" placeholder="Seconds" />
+    </div>
+
+    <div id="manualMode" style="display:none;">
+      <label>Total Talk Time (minutes):</label>
+      <input type="number" id="manualTT" placeholder="e.g. 83.5" />
+    </div>
+
+    <label>Effective CC:</label>
+    <input type="number" id="effCC" placeholder="e.g. 40" />
+
+    <button onclick="calculateAll()">Calculate KRA</button>
+
+    <div class="result" id="talktimeResult"></div>
+    <div class="result" id="kraResult"></div>
+  </div>
+
+  <script>
+    let manualMode = false;
+
+    function toggleMode() {
+      manualMode = !manualMode;
+      const toggleBtn = document.getElementById("toggleBtn");
+      document.getElementById("autoMode").style.display = manualMode ? "none" : "block";
+      document.getElementById("manualMode").style.display = manualMode ? "block" : "none";
+
+      toggleBtn.textContent = manualMode ? "Switch to Auto Talk Time" : "Switch to Manual Talk Time";
+      toggleBtn.classList.toggle("active", manualMode);
+
+      document.getElementById("talktimeResult").textContent = "";
+      document.getElementById("kraResult").textContent = "";
+    }
+
+    function calculateAll() {
+      const effCC = parseFloat(document.getElementById("effCC").value);
+      let totalMinutes = 0;
+
+      if (isNaN(effCC)) {
+        alert("Please enter Effective CC");
+        return;
+      }
+
+      if (manualMode) {
+        totalMinutes = parseFloat(document.getElementById("manualTT").value);
+        if (isNaN(totalMinutes)) {
+          alert("Please enter valid total talk time");
+          return;
+        }
+      } else {
+        const calls = parseInt(document.getElementById("calls").value);
+        const min = parseInt(document.getElementById("minutes").value) || 0;
+        const sec = parseInt(document.getElementById("seconds").value) || 0;
+
+        if (isNaN(calls) || calls <= 0) {
+          alert("Please enter valid calls handled");
+          return;
+        }
+
+        const totalSeconds = calls * (min * 60 + sec);
+        totalMinutes = totalSeconds / 60;
+      }
+
+      const targetCC = 50;
+      const targetTT = 240;
+      const kraPercent = ((effCC / targetCC * 0.5) + (totalMinutes / targetTT * 0.5)) * 100;
+      const roundedKRA = kraPercent.toFixed(2);
+
+      document.getElementById("talktimeResult").textContent = `Total Talk Time: ${totalMinutes.toFixed(2)} minutes`;
+      document.getElementById("kraResult").textContent = `Your KRA: ${roundedKRA}%`;
+    }
+  </script>
+</body>
+</html>
