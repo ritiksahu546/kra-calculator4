@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>DGUNiVERSE – Digital Growth Agency</title>
+  <title>DGUNiVERSE – Growth Agency</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -10,7 +10,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
     }
 
     body {
@@ -19,243 +19,198 @@
       line-height: 1.6;
     }
 
-    /* CONTAINER */
     .container {
       max-width: 1100px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 50px 20px;
     }
 
     /* HERO SECTION */
     header {
-      background: linear-gradient(
-        rgba(0,0,0,0.6),
-        rgba(0,0,0,0.6)
-      ),
-      url("https://images.unsplash.com/photo-1556761175-4b46a572b786");
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+      url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1350&q=80");
       background-size: cover;
       background-position: center;
       color: #fff;
       text-align: center;
-      padding: 110px 20px;
+      padding: clamp(80px, 10vh, 120px) 20px;
     }
 
-    header h1 {
-      font-size: 42px;
-      margin-bottom: 15px;
-    }
-
-    header p {
-      font-size: 18px;
-      color: #e5e7eb;
-    }
+    header h1 { font-size: clamp(30px, 5vw, 48px); margin-bottom: 15px; }
+    header p { font-size: clamp(16px, 3vw, 20px); color: #e5e7eb; margin-bottom: 30px; }
 
     .btn {
       display: inline-block;
-      margin-top: 30px;
-      padding: 15px 35px;
+      padding: 14px 30px;
       background: #2563eb;
       color: #fff;
       text-decoration: none;
       border-radius: 8px;
-      font-size: 16px;
       font-weight: bold;
+      transition: 0.3s;
     }
 
-    /* SECTIONS */
-    section h2 {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 40px;
-    }
+    .btn:hover { transform: scale(1.05); background: #1d4ed8; }
 
+    /* RESPONSIVE GRID */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 25px;
+      margin-top: 40px;
     }
 
+    /* PLAN CARDS */
     .card {
-      background: rgba(255,255,255,0.95);
-      padding: 30px 20px;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      background: white;
+      padding: 35px 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e5e7eb;
     }
 
-    .card img {
-      width: 70px;
-      margin-bottom: 15px;
-    }
-
-    /* PRICING */
-    .price {
-      font-size: 36px;
-      color: #2563eb;
-      margin: 15px 0;
+    .popular { border: 2px solid #2563eb; position: relative; }
+    .popular-tag {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2563eb;
+      color: white;
+      padding: 4px 15px;
+      border-radius: 20px;
+      font-size: 12px;
       font-weight: bold;
     }
 
-    /* CTA */
-    .cta {
-      background: linear-gradient(135deg, #2563eb, #1e40af);
-      color: white;
-      text-align: center;
-      padding: 80px 20px;
-      margin-top: 60px;
+    .price { font-size: 36px; color: #2563eb; font-weight: bold; margin: 15px 0; }
+    
+    .features {
+      list-style: none;
+      text-align: left;
+      margin: 20px 0;
+      flex-grow: 1; /* Pushes button to bottom */
     }
 
-    .cta h2 {
-      font-size: 34px;
-      margin-bottom: 15px;
+    .features li {
+      margin-bottom: 12px;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
     }
 
-    .cta p {
-      font-size: 18px;
-      color: #e5e7eb;
+    .features li::before {
+      content: "✔";
+      color: #2563eb;
+      font-weight: bold;
+      margin-right: 10px;
     }
 
-    /* FOOTER */
-    footer {
-      background: #111827;
-      color: #9ca3af;
-      text-align: center;
-      padding: 25px;
-      font-size: 14px;
-    }
-
-    /* STICKY WHATSAPP */
+    /* FOOTER & WHATSAPP */
+    footer { background: #111827; color: #9ca3af; text-align: center; padding: 40px 20px; }
+    
     .whatsapp-float {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 25px;
+      right: 25px;
       width: 60px;
-      height: 60px;
       z-index: 1000;
     }
 
-    .whatsapp-float img {
-      width: 100%;
-      height: 100%;
-    }
-
-    /* MOBILE RESPONSIVE */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 28px;
-      }
-
-      header p {
-        font-size: 16px;
-      }
-
-      .btn {
-        padding: 12px 24px;
-        font-size: 15px;
-      }
-
-      section h2 {
-        font-size: 24px;
-      }
-
-      .whatsapp-float {
-        width: 65px;
-        height: 65px;
-        bottom: 15px;
-        right: 15px;
-      }
-    }
-
-    /* TABLET */
-    @media (max-width: 900px) {
-      header {
-        padding: 80px 20px;
-      }
+    /* WHY CHOOSE US */
+    .why-us {
+      background: #eff6ff;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      margin-bottom: 50px;
     }
   </style>
 </head>
 <body>
 
-<!-- HERO -->
 <header>
   <h1>Grow Your Business with DGUNiVERSE</h1>
-  <p>We manage Facebook & Instagram Ads so you can focus on growth.</p>
-  <a class="btn" href="https://wa.me/91XXXXXXXXXX" target="_blank">
-    Chat on WhatsApp
-  </a>
+  <p>Technical & Data-Driven Ads Management</p>
+  <a class="btn" href="https://wa.me/919301458329?text=Hi,%20I%20want%20to%20consult%20for%20my%20business%20ads.">Get Free Consultation</a>
 </header>
 
-<!-- SERVICES -->
 <section class="container">
-  <h2>What We Do</h2>
+  <div class="why-us">
+    <h2>Data-Driven Expertise</h2>
+    <p>Hum algorithms aur data patterns ko analyze karte hain taaki aapke har ek rupaye ka maximum result mile.</p>
+  </div>
+
+  <h2 style="text-align:center;">Our Growth Plans</h2>
   <div class="grid">
+    
     <div class="card">
-      <img src="https://img.icons8.com/color/96/facebook-new.png">
-      <h3>Facebook Ads</h3>
-      <p>High-converting campaigns for leads & sales.</p>
+      <h3>Starter Plan</h3>
+      <div class="price">₹2,999<span style="font-size:14px; color:#666;">/mo</span></div>
+      <ul class="features">
+        <li>Campaign Setup</li>
+        <li>Basic Audience Targeting</li>
+        <li>Daily Monitoring</li>
+        <li>Weekly Report</li>
+        <li>WhatsApp Support</li>
+      </ul>
+      <a class="btn" href="https://wa.me/919301458329?text=Interested%20in%20Starter%20Plan">Choose Plan</a>
     </div>
+
+    <div class="card popular">
+      <div class="popular-tag">RECOMMENDED</div>
+      <h3>Standard Plan</h3>
+      <div class="price">₹5,000<span style="font-size:14px; color:#666;">/mo</span></div>
+      <ul class="features">
+        <li>Everything in Starter +</li>
+        <li>Facebook & Instagram Ads</li>
+        <li>Daily Ad Optimization</li>
+        <li>Weekly Detailed Reporting</li>
+        <li>Priority WhatsApp Support</li>
+      </ul>
+      <a class="btn" href="https://wa.me/919301458329?text=Interested%20in%20Standard%20Plan">Choose Plan</a>
+    </div>
+
     <div class="card">
-      <img src="https://img.icons8.com/color/96/instagram-new.png">
-      <h3>Instagram Ads</h3>
-      <p>Reach the right audience with powerful creatives.</p>
+      <h3>Business Plan</h3>
+      <div class="price">₹9,999<span style="font-size:14px; color:#666;">/mo</span></div>
+      <ul class="features">
+        <li>Everything in Standard +</li>
+        <li>Lead Generation Focus</li>
+        <li>Sales Campaign Management</li>
+        <li>Retargeting Campaigns</li>
+        <li>24/7 Priority Support</li>
+      </ul>
+      <a class="btn" href="https://wa.me/919301458329?text=Interested%20in%20Business%20Plan">Choose Plan</a>
     </div>
-    <div class="card">
-      <img src="https://img.icons8.com/color/96/combo-chart--v1.png">
-      <h3>Lead Generation</h3>
-      <p>Quality leads at optimized cost.</p>
-    </div>
-    <div class="card">
-      <img src="https://img.icons8.com/color/96/shopping-cart--v1.png">
-      <h3>Sales Campaigns</h3>
-      <p>Turn traffic into paying customers.</p>
-    </div>
+
   </div>
+  <p style="text-align: center; margin-top: 25px; color: #ef4444; font-weight: bold;">*Ad budget separate</p>
 </section>
 
-<!-- WHO WE HELP -->
 <section class="container">
-  <h2>Who We Help</h2>
-  <div class="grid">
-    <div class="card">Small Businesses</div>
-    <div class="card">Dropshippers</div>
-    <div class="card">Coaches & Institutes</div>
-    <div class="card">Local Shops</div>
+  <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+    <div style="background:white; padding:20px; border-radius:10px; border-left:4px solid #2563eb;">
+      <p style="font-style:italic;">"50+ quality leads generate kiye sirf ek hafte mein. Best service!"</p>
+      <p><b>- Rahul Sharma</b></p>
+    </div>
+    <div style="background:white; padding:20px; border-radius:10px; border-left:4px solid #2563eb;">
+      <p style="font-style:italic;">"ROI 3x badh gaya hai jabse DGUNiVERSE manage kar raha hai."</p>
+      <p><b>- Anjali Gupta</b></p>
+    </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="container">
-  <h2>Pricing</h2>
-  <div class="card">
-    <h3>Ads Management</h3>
-    <div class="price">₹5,000 / Month</div>
-    <p>
-      ✔ Campaign Setup<br>
-      ✔ Daily Monitoring<br>
-      ✔ Weekly Report<br>
-      ✔ WhatsApp Support<br><br>
-      <b>*Ad budget separate</b>
-    </p>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta">
-  <h2>Ready to Grow Your Business?</h2>
-  <p>Let DGUNiVERSE handle your ads professionally.</p>
-  <a class="btn" href="https://wa.me/91XXXXXXXXXX" target="_blank">
-    Get Started Now
-  </a>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  © 2025 DGUNiVERSE – Digital Growth Agency
+  <p>© 2025 DGUNiVERSE – Designed for Growth.</p>
+  <p>Contact: +91 9301458329</p>
 </footer>
 
-<!-- STICKY WHATSAPP BUTTON -->
-<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank">
-  <img src="https://img.icons8.com/color/96/whatsapp--v1.png" alt="WhatsApp">
+<a href="https://wa.me/919301458329" class="whatsapp-float">
+  <img src="https://img.icons8.com/color/96/whatsapp--v1.png" width="100%" alt="WhatsApp">
 </a>
 
 </body>
