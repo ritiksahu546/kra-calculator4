@@ -19,6 +19,7 @@
       line-height: 1.6;
     }
 
+    /* CONTAINER */
     .container {
       max-width: 1100px;
       margin: auto;
@@ -36,7 +37,7 @@
       background-position: center;
       color: #fff;
       text-align: center;
-      padding: 100px 20px;
+      padding: 110px 20px;
     }
 
     header h1 {
@@ -61,6 +62,7 @@
       font-weight: bold;
     }
 
+    /* SECTIONS */
     section h2 {
       text-align: center;
       font-size: 32px;
@@ -94,7 +96,7 @@
       font-weight: bold;
     }
 
-    /* CTA SECTION */
+    /* CTA */
     .cta {
       background: linear-gradient(135deg, #2563eb, #1e40af);
       color: white;
@@ -113,12 +115,62 @@
       color: #e5e7eb;
     }
 
+    /* FOOTER */
     footer {
       background: #111827;
       color: #9ca3af;
       text-align: center;
       padding: 25px;
       font-size: 14px;
+    }
+
+    /* STICKY WHATSAPP */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      z-index: 1000;
+    }
+
+    .whatsapp-float img {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 28px;
+      }
+
+      header p {
+        font-size: 16px;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        font-size: 15px;
+      }
+
+      section h2 {
+        font-size: 24px;
+      }
+
+      .whatsapp-float {
+        width: 65px;
+        height: 65px;
+        bottom: 15px;
+        right: 15px;
+      }
+    }
+
+    /* TABLET */
+    @media (max-width: 900px) {
+      header {
+        padding: 80px 20px;
+      }
     }
   </style>
 </head>
@@ -155,7 +207,7 @@
     <div class="card">
       <img src="https://img.icons8.com/color/96/shopping-cart--v1.png">
       <h3>Sales Campaigns</h3>
-      <p>Turn traffic into real paying customers.</p>
+      <p>Turn traffic into paying customers.</p>
     </div>
   </div>
 </section>
@@ -200,6 +252,11 @@
 <footer>
   © 2025 DGUNiVERSE – Digital Growth Agency
 </footer>
+
+<!-- STICKY WHATSAPP BUTTON -->
+<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank">
+  <img src="https://img.icons8.com/color/96/whatsapp--v1.png" alt="WhatsApp">
+</a>
 
 </body>
 </html>
