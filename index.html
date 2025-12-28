@@ -3,297 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DGUNiVERSE | Premium Digital Marketing Agency</title>
+    <title>DGUNiVERSE | Full-Scale Digital Growth</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
             --bg: #05070a;
-            --card-bg: rgba(255, 255, 255, 0.03);
             --accent: #00d2ff;
             --purple: #9d50bb;
             --text: #e5e7eb;
+            --glass: rgba(255, 255, 255, 0.05);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: rgba(5, 7, 10, 0.8); backdrop-filter: blur(10px);
+            padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 20px;
+        .nav-container {
+            max-width: 1200px; margin: auto; display: flex;
+            justify-content: space-between; align-items: center; padding: 0 20px;
         }
+        .logo { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: var(--accent); font-weight: 800; text-decoration: none; }
+        
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { text-decoration: none; color: white; font-size: 0.9rem; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
 
-        /* --- HERO SECTION --- */
+        /* Mobile Menu Button */
+        .hamburger { display: none; cursor: pointer; font-size: 2rem; color: white; }
+
+        /* --- HERO --- */
         header {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #05070a 100%);
-            position: relative;
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; background: radial-gradient(circle at center, #1a1a2e 0%, #05070a 100%);
         }
-
-        header::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/stardust.png');
-            opacity: 0.3;
-        }
-
         .hero-content h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3rem, 8vw, 5rem);
-            background: linear-gradient(to right, #fff, var(--accent), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 5px;
-            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif; font-size: clamp(2.5rem, 8vw, 5rem);
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px;
         }
 
-        .hero-content p {
-            font-size: 1.2rem;
-            color: #9ca3af;
-            max-width: 700px;
-            margin: auto;
-            margin-bottom: 40px;
+        /* --- GRID SYSTEM (Responsive) --- */
+        .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
+        .grid { display: grid; gap: 30px; }
+        
+        /* Desktop: 4 columns, Tablet: 2 columns, Mobile: 1 column */
+        .grid-services { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        
+        .card {
+            background: var(--glass); padding: 40px 20px; border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05); text-align: center; transition: 0.3s;
         }
+        .card:hover { border-color: var(--accent); transform: translateY(-10px); }
 
         .btn {
-            padding: 18px 45px;
-            background: linear-gradient(45deg, var(--accent), var(--purple));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
-            display: inline-block;
-            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.3);
+            padding: 15px 35px; background: var(--accent); color: #000;
+            text-decoration: none; border-radius: 50px; font-weight: 800; display: inline-block;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 210, 255, 0.5);
-        }
-
-        /* --- STATS SECTION --- */
-        .stats {
-            padding: 80px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-
-        .stat-card h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            color: var(--accent);
-        }
-
-        /* --- SERVICES & CARDS --- */
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            color: white;
-        }
-
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 40px 30px;
-            border-radius: 25px;
-            border: 1px solid rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            transition: 0.4s;
-            text-align: center;
-        }
-
-        .card:hover {
-            border-color: var(--accent);
-            background: rgba(255, 255, 255, 0.07);
-            transform: translateY(-10px);
-        }
-
-        .card img {
-            width: 70px;
-            margin-bottom: 20px;
-        }
-
-        /* --- PROCESS SECTION --- */
-        .process-step {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            margin-bottom: 50px;
-        }
-
-        .step-num {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
-            color: rgba(0, 210, 255, 0.2);
-        }
-
-        /* --- PRICING --- */
-        .pricing-box {
-            max-width: 500px;
-            margin: auto;
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
-        }
-
-        .price {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
-            margin: 20px 0;
-        }
-
-        footer {
-            padding: 40px;
-            text-align: center;
-            background: #020202;
-            color: #6b7280;
-            border-top: 1px solid #111;
-        }
-
+        /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            .process-step { flex-direction: column; text-align: center; }
+            .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; width: 100%;
+                background: #05070a; flex-direction: column; padding: 20px; text-align: center;
+            }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .hero-content p { font-size: 1rem; }
         }
+
+        footer { text-align: center; padding: 40px; border-top: 1px solid #111; font-size: 0.8rem; color: #555; }
     </style>
 </head>
 <body>
 
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">DGUNiVERSE</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="https://wa.me/91XXXXXXXXXX" class="btn" style="color:black; padding: 10px 20px;">Contact</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+        </div>
+    </nav>
+
     <header>
-        <div class="container hero-content" data-aos="zoom-in">
+        <div class="container hero-content" data-aos="fade-up">
             <h1>DGUNiVERSE</h1>
-            <p>We are a high-performance digital galaxy helping brands dominate with Meta Ads & Growth Strategies.</p>
-            <a href="#contact" class="btn">Start Your Mission</a>
+            <p style="color:#9ca3af; margin-bottom: 30px;">Expanding your digital reach with high-converting Meta Ads.</p>
+            <a href="#pricing" class="btn">View Packages</a>
         </div>
     </header>
 
-    <section class="stats">
-        <div class="container grid-3">
-            <div class="stat-card" data-aos="fade-up">
-                <h2>50+</h2>
-                <p>Happy Clients</p>
+    <section class="container" id="services">
+        <h2 style="text-align: center; font-family: 'Orbitron'; margin-bottom: 50px;">Our Services</h2>
+        <div class="grid grid-services">
+            <div class="card" data-aos="zoom-in">
+                <img src="https://img.icons8.com/fluency/48/facebook-new.png">
+                <h3>Facebook Ads</h3>
+                <p>Targeted campaigns to drive sales.</p>
             </div>
-            <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
-                <h2>₹10L+</h2>
-                <p>Ad Spend Managed</p>
+            <div class="card" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://img.icons8.com/fluency/48/instagram-new.png">
+                <h3>Instagram Ads</h3>
+                <p>Visual storytelling that converts.</p>
             </div>
-            <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
-                <h2>4.5x</h2>
-                <p>Average ROAS</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="container">
-        <h2 class="section-title">Core Galaxies</h2>
-        <div class="grid-4">
-            <div class="card" data-aos="flip-left">
-                <img src="https://img.icons8.com/fluency/96/facebook-new.png" alt="FB">
-                <h3>Meta Ads</h3>
-                <p>Converting scrollers into buyers with high-ROAS Facebook & Instagram ads.</p>
-            </div>
-            <div class="card" data-aos="flip-left" data-aos-delay="100">
-                <img src="https://img.icons8.com/fluency/96/bullseye.png" alt="Target">
-                <h3>Lead Gen</h3>
-                <p>Collecting high-intent data so your sales team never stays idle.</p>
-            </div>
-            <div class="card" data-aos="flip-left" data-aos-delay="200">
-                <img src="https://img.icons8.com/fluency/96/video-marketing.png" alt="Content">
-                <h3>Viral Content</h3>
-                <p>Short-form video strategies that build community and trust.</p>
-            </div>
-            <div class="card" data-aos="flip-left" data-aos-delay="300">
-                <img src="https://img.icons8.com/fluency/96/rocket.png" alt="Scale">
-                <h3>E-com Scaling</h3>
-                <p>Scaling your dropshipping or D2C brand from 0 to 7 figures.</p>
+            <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://img.icons8.com/fluency/48/rocket.png">
+                <h3>Growth Strategy</h3>
+                <p>Plan to scale your brand to 10x.</p>
             </div>
         </div>
     </section>
 
-    <section class="container">
-        <h2 class="section-title">The Launch Process</h2>
-        <div class="process-step" data-aos="fade-right">
-            <div class="step-num">01</div>
-            <div>
-                <h3>Audit & Analysis</h3>
-                <p>Hum aapke current business metrics ko study karte hain taaki growth plan ban sake.</p>
-            </div>
-        </div>
-        <div class="process-step" data-aos="fade-left">
-            <div class="step-num">02</div>
-            <div>
-                <h3>Creative Launch</h3>
-                <p>High-quality ads images aur videos banakar campaigns live kiye jaate hain.</p>
-            </div>
-        </div>
-        <div class="process-step" data-aos="fade-right">
-            <div class="step-num">03</div>
-            <div>
-                <h3>Scale to Orbit</h3>
-                <p>Winner ads ko identify karke hum budget badhate hain maximum profit ke liye.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="container" id="pricing">
-        <h2 class="section-title">Monthly Retainer</h2>
-        <div class="card pricing-box" data-aos="zoom-in">
-            <h3>Standard Growth</h3>
-            <div class="price">₹5,000</div>
-            <p style="margin-bottom: 25px; color: #9ca3af;">Perfect for small businesses & creators.</p>
-            <ul style="list-style: none; text-align: left; margin-bottom: 30px; line-height: 2.5;">
-                <li>🚀 Campaign Setup & Research</li>
-                <li>📊 Weekly Performance Reports</li>
-                <li>🎨 Basic Ad Creatives</li>
-                <li>💬 24/7 WhatsApp Support</li>
-            </ul>
-            <a href="https://wa.me/91YOURNUMBER" class="btn">Get Started</a>
+    <section id="pricing" class="container" style="text-align: center;">
+        <h2 style="font-family: 'Orbitron'; margin-bottom: 30px;">Investment</h2>
+        <div class="card" style="max-width: 400px; margin: auto; border: 2px solid var(--accent);">
+            <h3 style="color: var(--accent);">Ads Management</h3>
+            <div style="font-size: 3rem; font-weight: 800; margin: 20px 0;">₹5,000</div>
+            <p>Weekly Reports | Campaign Setup | Support</p><br>
+            <a href="https://wa.me/91XXXXXXXXXX" class="btn">Start Now</a>
         </div>
     </section>
 
     <footer>
-        <p>© 2025 DGUNiVERSE – Let's Build Your Digital Empire.</p>
+        © 2025 DGUNiVERSE – Designed for Growth.
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init();
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
     </script>
 </body>
 </html>
