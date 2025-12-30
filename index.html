@@ -1,214 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>DGUNiVERSE – Data-Driven Ad Agency</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    :root { --primary: #2563eb; --dark: #0f172a; --accent: #38bdf8; --light: #f8fafc; }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', sans-serif; }
-    body { background: #f1f5f9; color: var(--dark); line-height: 1.6; }
-    .container { max-width: 1100px; margin: auto; padding: 80px 20px; }
-    h2 { text-align: center; font-size: 36px; margin-bottom: 50px; font-weight: 800; color: var(--dark); }
+<meta charset="UTF-8">
+<title>AR Digital | Scale Your Business with Performance Marketing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    /* --- HERO WITH ANIMATED BG --- */
-    header {
-      position: relative; height: 100vh; min-height: 600px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; color: #fff; overflow: hidden;
-    }
-    header::before {
-      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background-size: cover; background-position: center; z-index: -2;
-      animation: slideBackground 18s infinite;
-    }
-    header::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.75); z-index: -1; }
-    
-    @keyframes slideBackground {
-      0%, 33% { background-image: url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1350&q=80"); }
-      34%, 66% { background-image: url("https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1350&q=80"); }
-      67%, 100% { background-image: url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1350&q=80"); }
-    }
+<meta name="description" content="AR Digital is a performance marketing agency helping businesses scale with Meta Ads, high-quality lead generation, and ROI-focused strategies.">
 
-    .btn {
-      display: inline-block; padding: 16px 36px; background: var(--primary); color: #fff;
-      text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.4s;
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
-    }
-    .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4); }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    /* --- STATS BOX --- */
-    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; background: #fff; padding: 40px; border-radius: 24px; margin-top: -80px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); position: relative; z-index: 10; text-align: center; }
-    .stat-box h3 { font-size: 40px; color: var(--primary); margin-bottom: 5px; }
+<style>
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --dark: #0f172a;
+  --light-bg: #f8fafc;
+}
 
-    /* --- SERVICES --- */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    .card { background: #fff; padding: 40px; border-radius: 20px; transition: 0.3s; border: 1px solid rgba(0,0,0,0.05); }
-    .card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-    .card img { width: 70px; margin-bottom: 20px; }
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif}
+html {scroll-behavior: smooth;}
+body {background: var(--light-bg); color: var(--dark); line-height: 1.6;}
 
-    /* --- PROCESS SECTION --- */
-    .process-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-    .process-card { flex: 1; min-width: 250px; background: #fff; padding: 30px; border-radius: 15px; position: relative; }
-    .process-card span { font-size: 50px; font-weight: 900; color: rgba(37, 99, 235, 0.1); position: absolute; top: 10px; right: 20px; }
+/* Navigation */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 1000;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 5%; background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px); transition: 0.3s;
+}
+nav.scrolled {box-shadow: 0 10px 30px rgba(0,0,0,0.2);}
+nav h2 {color: #fff; font-weight: 800; letter-spacing: -1px;}
+nav ul {display: flex; gap: 25px; list-style: none;}
+nav ul a {
+  color: #cbd5e1; text-decoration: none; font-weight: 600;
+  transition: 0.3s; font-size: 15px;
+}
+nav ul a:hover, nav ul a.active {color: #fff;}
 
-    /* --- PRICING --- */
-    .price-card { background: #fff; padding: 50px 30px; border-radius: 24px; text-align: center; border: 1px solid #e2e8f0; }
-    .popular { border: 3px solid var(--primary); transform: scale(1.05); z-index: 5; }
-    .price-tag { font-size: 48px; font-weight: 800; color: var(--primary); margin: 20px 0; }
-    .features { list-style: none; text-align: left; margin: 30px 0; }
-    .features li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-    .features li::before { content: '✓'; color: #10b981; font-weight: 900; }
+.menu-btn {display: none; color: #fff; font-size: 24px; cursor: pointer;}
 
-    /* --- FAQ --- */
-    .faq-container { max-width: 800px; margin: auto; }
-    .faq-item { background: #fff; margin-bottom: 15px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-    .faq-question { width: 100%; padding: 25px; background: none; border: none; text-align: left; font-size: 18px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--dark); }
-    .faq-answer { max-height: 0; overflow: hidden; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding: 0 25px; color: #64748b; }
-    .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 25px; }
+/* Hero Section */
+header {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  text-align: center; color: #fff;
+  background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)),
+  url("https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80") center/cover;
+  padding: 0 20px;
+}
+header h1 {font-size: clamp(32px, 5vw, 64px); font-weight: 800; line-height: 1.1;}
+header p {margin-top: 20px; font-size: clamp(16px, 2vw, 20px); color: #cbd5e1; max-width: 700px; margin-inline: auto;}
+.hero-lines {margin-top: 24px; font-size: 16px; display: inline-block; text-align: left;}
+.hero-lines div {margin-bottom: 8px;}
 
-    /* --- FOOTER --- */
-    footer { background: var(--dark); color: #94a3b8; padding: 80px 20px 40px; text-align: center; }
-    .footer-content { max-width: 1100px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; }
-    .footer-logo h2 { color: #fff; text-align: left; margin-bottom: 15px; }
+.hero-btns {margin-top: 35px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;}
+.btn {
+  background: var(--primary); color: #fff; padding: 14px 32px; border-radius: 50px;
+  text-decoration: none; font-weight: 700; transition: 0.3s; display: inline-block;
+}
+.btn:hover {background: var(--primary-dark); transform: translateY(-2px);}
+.btn-alt {background: transparent; border: 2px solid #fff;}
 
-    .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 65px; z-index: 1000; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); }
+/* Common Section Settings */
+section {padding: 100px 5%; max-width: 1200px; margin: auto; scroll-margin-top: 80px;}
+h2.section-title {text-align: center; font-size: clamp(28px, 4vw, 40px); margin-bottom: 50px; font-weight: 800;}
 
-    @media (max-width: 768px) { .popular { transform: scale(1); } header { height: auto; padding: 120px 20px; } }
-  </style>
+/* Stats Counter */
+.stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px; background: #fff; padding: 50px; border-radius: 24px;
+  margin-top: -100px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+  position: relative; z-index: 10; text-align: center;
+}
+.stat-box h3 {font-size: 42px; color: var(--primary); margin-bottom: 5px;}
+.stat-box p {font-weight: 600; color: #64748b;}
+
+/* Services */
+.grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;}
+.card {
+  background: #fff; padding: 40px; border-radius: 24px;
+  border: 1px solid #e2e8f0; transition: 0.4s;
+}
+.card:hover {transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05);}
+.card h3 {margin-bottom: 15px; font-size: 22px; color: var(--dark);}
+
+/* Pricing */
+.pricing {display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; align-items: center;}
+.price-card {
+  background: #fff; padding: 50px 40px; border-radius: 24px;
+  text-align: center; border: 1px solid #e2e8f0; transition: 0.3s;
+}
+.price-card.popular {
+  border: 3px solid var(--primary); transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+  position: relative;
+}
+.popular-tag {
+  position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+  background: var(--primary); color: #fff; padding: 4px 15px; border-radius: 20px; font-size: 12px; font-weight: 800;
+}
+.price {font-size: 48px; color: var(--dark); font-weight: 800; margin: 20px 0;}
+.price-card ul {list-style: none; text-align: left; margin: 30px 0; color: #475569;}
+.price-card ul li {margin-bottom: 12px;}
+.price-card ul li::before {content: "✓"; color: #22c55e; font-weight: 900; margin-right: 10px;}
+
+/* CTA */
+.cta-box {
+  background: var(--dark); color: #fff; padding: 80px 40px; border-radius: 32px;
+  text-align: center;
+}
+.cta-box h2 {font-size: 36px; margin-bottom: 15px;}
+.cta-box p {margin-bottom: 30px; color: #cbd5e1;}
+
+/* Footer */
+footer {background: #020617; color: #94a3b8; padding: 60px 5%; text-align: center;}
+footer b {color: #fff;}
+
+/* WhatsApp Floating */
+.whatsapp-float {
+  position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+  background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 1000; transition: 0.3s;
+}
+.whatsapp-float:hover {transform: scale(1.1);}
+
+/* Responsive */
+@media(max-width: 768px) {
+  nav ul {
+    display: none; position: absolute; top: 100%; right: 5%; width: 90%;
+    background: #0f172a; flex-direction: column; padding: 20px; border-radius: 15px; text-align: center;
+  }
+  nav ul.show {display: flex;}
+  .menu-btn {display: block;}
+  .price-card.popular {transform: scale(1); margin: 20px 0;}
+}
+</style>
 </head>
 <body>
 
+<nav id="navbar">
+  <h2>AR Digital</h2>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <ul id="nav-menu">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#plans">Plans</a></li>
+    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeVAahB0Cn25BLrGB0fODmgudbtQfh-Ml9jocw1nKkEGc1DNA/viewform" target="_blank">Free Audit</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
 <header>
-  <h1 style="letter-spacing: -1px;">DGUNiVERSE</h1>
-  <p>Technical Media Buying & Growth Engineering</p>
-  <a class="btn" href="https://wa.me/919301458329">Consult With An Expert</a>
+  <div>
+    <h1>Stop Guessing. Start Scaling.</h1>
+    <p>We turn your ad spend into measurable revenue using data-backed Meta Ads and high-converting sales funnels.</p>
+    <div class="hero-lines">
+      <div>✔ <b>High-ROAS</b> Facebook & Instagram Campaigns</div>
+      <div>✔ <b>Lead Quality Filtering</b> (No more junk leads)</div>
+      <div>✔ <b>Transparent</b> Performance Reporting</div>
+    </div>
+    <div class="hero-btns">
+      <a class="btn" href="https://wa.me/919301458329">Chat on WhatsApp</a>
+      <a class="btn btn-alt" href="#contact">Claim Free Consultation</a>
+    </div>
+  </div>
 </header>
 
-<div class="container">
+<section style="padding-top:0;">
   <div class="stats">
-    <div class="stat-box"><h3>₹50K+</h3><p>Ad Spend Managed</p></div>
+    <div class="stat-box"><h3>₹5L+</h3><p>Ad Spend Managed</p></div>
     <div class="stat-box"><h3>500+</h3><p>Qualified Leads</p></div>
-    <div class="stat-box"><h3>3.5X</h3><p>Avg. ROAS</p></div>
+    <div class="stat-box"><h3>3.5X</h3><p>Avg. Return (ROAS)</p></div>
   </div>
+</section>
 
-  <section style="margin-top: 100px;">
-    <h2>High-Impact Solutions</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="https://img.icons8.com/color/96/facebook-new.png">
-        <h3>Precision FB Ads</h3>
-        <p>Advanced pixel integration aur custom conversion tracking ke saath hum aapke budget ka har ek paisa optimize karte hain.</p>
-      </div>
-      <div class="card">
-        <img src="https://img.icons8.com/color/96/instagram-new.png">
-        <h3>Instagram Growth</h3>
-        <p>Viral creatives aur targeted placement jo aapke brand ko sirf "likes" nahi, balki "paying customers" dilata hai.</p>
-      </div>
-      <div class="card">
-        <img src="https://img.icons8.com/color/96/bullseye.png">
-        <h3>Lead Funnels</h3>
-        <p>Hum sirf ads nahi chalate, hum lead capture funnels banate hain taaki aapka sales team hamesha busy rahe.</p>
-      </div>
+<section id="services">
+  <h2 class="section-title">High-Impact Solutions</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Meta Ads Mastery</h3>
+      <p>We don't just "boost posts." We build full-funnel architectures that find your ideal customers while they scroll.</p>
     </div>
-  </section>
+    <div class="card">
+      <h3>Conversion Design</h3>
+      <p>Instagram growth isn't just about followers; it's about thumb-stopping creatives that trigger clicks and sales.</p>
+    </div>
+    <div class="card">
+      <h3>Growth Funnels</h3>
+      <p>We build the "plumbing" for your leads—ensuring they are nurtured from the first click to the final sale.</p>
+    </div>
+  </div>
+</section>
 
-  <section style="margin-top: 100px;">
-    <h2>The Success Framework</h2>
-    <div class="process-container">
-      <div class="process-card"><span>01</span><h4>Technical Audit</h4><p>Hum aapke product aur market data ko analyze karke winning strategy banate hain.</p></div>
-      <div class="process-card"><span>02</span><h4>Ad Architecture</h4><p>High-converting creatives aur targeted audience sets ka launch.</p></div>
-      <div class="process-card"><span>03</span><h4>Scale & ROAS</h4><p>Data ko analyze karke hum successful ads ko scale karte hain.</p></div>
+<section id="plans" style="background: #f1f5f9;">
+  <h2 class="section-title">Performance-Based Plans</h2>
+  <div class="pricing">
+    <div class="price-card">
+      <h3>Starter</h3>
+      <div class="price">₹2,999</div>
+      <p>Perfect for testing the waters.</p>
+      <ul>
+        <li>Ad Account Setup</li>
+        <li>Basic Campaign Mgmt</li>
+        <li>Weekly Performance Review</li>
+      </ul>
+      <a class="btn" href="https://wa.me/919301458329">Start Today</a>
     </div>
-  </section>
+    <div class="price-card popular">
+      <div class="popular-tag">MOST POPULAR</div>
+      <h3>Standard</h3>
+      <div class="price">₹5,000</div>
+      <p>Scale your lead flow consistently.</p>
+      <ul>
+        <li>FB + IG Full Management</li>
+        <li>Advanced A/B Testing</li>
+        <li>Creative Strategy Support</li>
+      </ul>
+      <a class="btn" href="https://wa.me/919301458329">Scale Now</a>
+    </div>
+    <div class="price-card">
+      <h3>Elite</h3>
+      <div class="price">₹9,999</div>
+      <p>Your outsourced marketing team.</p>
+      <ul>
+        <li>Full Sales Funnel Setup</li>
+        <li>Retargeting Campaigns</li>
+        <li>Priority 24/7 Support</li>
+      </ul>
+      <a class="btn" href="https://wa.me/919301458329">Dominate Market</a>
+    </div>
+  </div>
+</section>
 
-  <section style="margin-top: 100px;">
-    <h2>Performance Based Plans</h2>
-    <div class="grid">
-      <div class="price-card">
-        <h3>Starter</h3>
-        <div class="price-tag">₹2,999</div>
-        <ul class="features">
-          <li>Basic Campaign Setup</li>
-          <li>Core Audience Targeting</li>
-          <li>Weekly Performance Call</li>
-          <li>Standard Support</li>
-        </ul>
-        <a class="btn" style="width:100%" href="https://wa.me/919301458329?text=Starter%20Inquiry">Start Growing</a>
-      </div>
-      <div class="price-card popular">
-        <h3>Standard</h3>
-        <div class="price-tag">₹5,000</div>
-        <ul class="features">
-          <li>FB + IG Full Mgmt</li>
-          <li>A/B Split Testing</li>
-          <li>Daily Budget Optimization</li>
-          <li>Advanced Retargeting</li>
-        </ul>
-        <a class="btn" style="width:100%" href="https://wa.me/919301458329?text=Standard%20Inquiry">Scale Now</a>
-      </div>
-      <div class="price-card">
-        <h3>Elite</h3>
-        <div class="price-tag">₹9,999</div>
-        <ul class="features">
-          <li>Full Funnel Strategy</li>
-          <li>Lead Capture Advice</li>
-          <li>Competitor Spy Reports</li>
-          <li>24/7 VIP Priority</li>
-        </ul>
-        <a class="btn" style="width:100%" href="https://wa.me/919301458329?text=Elite%20Inquiry">Dominte Market</a>
-      </div>
-    </div>
-  </section>
-
-  <section style="margin-top: 100px;">
-    <h2>Intelligence Hub (FAQs)</h2>
-    <div class="faq-container">
-      <div class="faq-item">
-        <button class="faq-question">Ads ka kharcha kaisa hoga? <span>+</span></button>
-        <div class="faq-answer"><p>Aap ₹200-₹500 daily se start kar sakte hain. Ad budget direct Meta ko jata hai, hamari fee management ke liye hai.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Kya main kabhi bhi cancel kar sakta hoon? <span>+</span></button>
-        <div class="faq-answer"><p>Haan, DGUNiVERSE mein koi long-term contract nahi hai. Hum results par kaam karte hain, results pasand na aaye toh aap cancel kar sakte hain.</p></div>
-      </div>
-    </div>
-  </section>
-</div>
+<section id="contact">
+  <div class="cta-box">
+    <h2>Ready to grow your revenue?</h2>
+    <p>Book a free 15-minute growth audit. We'll analyze your current ads and show you the gaps.</p>
+    <a class="btn" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeVAahB0Cn25BLrGB0fODmgudbtQfh-Ml9jocw1nKkEGc1DNA/viewform">
+       Get My Free Growth Audit
+    </a>
+  </div>
+</section>
 
 <footer>
-  <div class="footer-content">
-    <div class="footer-logo">
-      <h2>DGUNiVERSE</h2>
-      <p>Bridging the gap between Technology and Marketing. Technical expertise meets creative growth.</p>
-    </div>
-    <div>
-      <h4 style="color:#fff; margin-bottom:15px;">Services</h4>
-      <p>Performance Ads</p>
-      <p>Lead Generation</p>
-      <p>Conversion Tracking</p>
-    </div>
-    <div>
-      <h4 style="color:#fff; margin-bottom:15px;">Contact</h4>
-      <p>WhatsApp: +91 9301458329</p>
-      <p>Email: contact@dguniverse.com</p>
-    </div>
-  </div>
-  <p style="margin-top:40px; font-size:14px;">© 2025 DGUNiVERSE Digital Growth Agency. All Rights Reserved.</p>
+  <p><b>AR Digital</b> — Performance Marketing Agency</p>
+  <p style="margin: 10px 0;">WhatsApp: +91 9301458329</p>
+  <p style="font-size:13px; opacity: 0.6;">© 2025 AR Digital. All rights reserved.</p>
 </footer>
 
-<a href="https://wa.me/919301458329" class="whatsapp-float">
-  <img src="https://img.icons8.com/color/96/whatsapp--v1.png" width="100%">
+<a class="whatsapp-float" href="https://wa.me/919301458329" target="_blank">
+  <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp">
 </a>
 
 <script>
-  document.querySelectorAll('.faq-question').forEach(button => {
-    button.addEventListener('click', () => {
-      const item = button.parentElement;
-      item.classList.toggle('active');
-      button.querySelector('span').innerText = item.classList.contains('active') ? '−' : '+';
-    });
+const navBar = document.getElementById("navbar");
+const navMenu = document.getElementById("nav-menu");
+const sections = document.querySelectorAll("section, header");
+const navLinks = document.querySelectorAll("nav ul a");
+
+window.addEventListener("scroll", () => {
+  const scrollPos = window.scrollY;
+
+  // Header background on scroll
+  if (scrollPos > 50) {
+    navBar.classList.add("scrolled");
+  } else {
+    navBar.classList.remove("scrolled");
+  }
+
+  // Active Link Tracking
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (scrollPos >= sectionTop - 150) {
+      current = section.getAttribute("id") || "";
+    }
   });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href").includes(current) && current !== "") {
+      link.classList.add("active");
+    }
+  });
+});
+
+function toggleMenu() {
+  navMenu.classList.toggle("show");
+}
+
+// Close menu when link is clicked (Mobile)
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("show");
+  });
+});
 </script>
 
 </body>
