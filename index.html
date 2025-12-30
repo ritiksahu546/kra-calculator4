@@ -15,6 +15,7 @@
   --primary-dark: #1d4ed8;
   --dark: #0f172a;
   --light-bg: #f8fafc;
+  --success: #22c55e;
 }
 
 * {margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif}
@@ -51,6 +52,7 @@ header h1 {font-size: clamp(32px, 5vw, 64px); font-weight: 800; line-height: 1.1
 header p {margin-top: 20px; font-size: clamp(16px, 2vw, 20px); color: #cbd5e1; max-width: 700px; margin-inline: auto;}
 .hero-lines {margin-top: 24px; font-size: 16px; display: inline-block; text-align: left;}
 .hero-lines div {margin-bottom: 8px;}
+.hero-lines b {color: #60a5fa;}
 
 .hero-btns {margin-top: 35px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;}
 .btn {
@@ -59,6 +61,7 @@ header p {margin-top: 20px; font-size: clamp(16px, 2vw, 20px); color: #cbd5e1; m
 }
 .btn:hover {background: var(--primary-dark); transform: translateY(-2px);}
 .btn-alt {background: transparent; border: 2px solid #fff;}
+.btn-alt:hover {background: #fff; color: var(--dark);}
 
 /* Common Section Settings */
 section {padding: 100px 5%; max-width: 1200px; margin: auto; scroll-margin-top: 80px;}
@@ -74,14 +77,21 @@ h2.section-title {text-align: center; font-size: clamp(28px, 4vw, 40px); margin-
 .stat-box h3 {font-size: 42px; color: var(--primary); margin-bottom: 5px;}
 .stat-box p {font-weight: 600; color: #64748b;}
 
-/* Services */
+/* Services & Reviews Grid */
 .grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;}
-.card {
+.card, .t-card {
   background: #fff; padding: 40px; border-radius: 24px;
   border: 1px solid #e2e8f0; transition: 0.4s;
 }
 .card:hover {transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05);}
 .card h3 {margin-bottom: 15px; font-size: 22px; color: var(--dark);}
+
+/* Testimonials */
+.testimonials { background: #f1f5f9; }
+.t-card p { font-style: italic; color: #475569; margin-bottom: 20px; font-size: 15px; }
+.t-user { display: flex; align-items: center; gap: 15px; }
+.t-info h4 { font-size: 16px; color: var(--dark); margin: 0; }
+.t-info span { font-size: 13px; color: var(--primary); font-weight: 600; }
 
 /* Pricing */
 .pricing {display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; align-items: center;}
@@ -100,8 +110,17 @@ h2.section-title {text-align: center; font-size: clamp(28px, 4vw, 40px); margin-
 }
 .price {font-size: 48px; color: var(--dark); font-weight: 800; margin: 20px 0;}
 .price-card ul {list-style: none; text-align: left; margin: 30px 0; color: #475569;}
-.price-card ul li {margin-bottom: 12px;}
-.price-card ul li::before {content: "✓"; color: #22c55e; font-weight: 900; margin-right: 10px;}
+.price-card ul li {margin-bottom: 12px; font-size: 14px;}
+.price-card ul li::before {content: "✓"; color: var(--success); font-weight: 900; margin-right: 10px;}
+
+/* FAQ Section */
+.faq-container { max-width: 800px; margin: auto; }
+.faq-item { background: #fff; margin-bottom: 15px; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden; }
+.faq-question { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; transition: 0.3s; }
+.faq-question:hover { background: #f8fafc; }
+.faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: 0.3s ease-out; color: #64748b; font-size: 15px; }
+.faq-item.active .faq-answer { padding: 0 20px 20px 20px; max-height: 200px; }
+.faq-item.active .faq-question { color: var(--primary); }
 
 /* CTA */
 .cta-box {
@@ -128,10 +147,12 @@ footer b {color: #fff;}
   nav ul {
     display: none; position: absolute; top: 100%; right: 5%; width: 90%;
     background: #0f172a; flex-direction: column; padding: 20px; border-radius: 15px; text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
   }
   nav ul.show {display: flex;}
   .menu-btn {display: block;}
   .price-card.popular {transform: scale(1); margin: 20px 0;}
+  section {padding: 60px 5%;}
 }
 </style>
 </head>
@@ -143,7 +164,8 @@ footer b {color: #fff;}
   <ul id="nav-menu">
     <li><a href="#services">Services</a></li>
     <li><a href="#plans">Plans</a></li>
-    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeVAahB0Cn25BLrGB0fODmgudbtQfh-Ml9jocw1nKkEGc1DNA/viewform" target="_blank">Free Audit</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -230,6 +252,57 @@ footer b {color: #fff;}
   </div>
 </section>
 
+<section id="reviews" class="testimonials">
+  <h2 class="section-title">Client Success Stories</h2>
+  <div class="grid">
+    <div class="t-card">
+      <p>"AR Digital helped us generate 150+ high-quality leads in just 30 days. Their Meta Ads strategy is a game changer for local businesses."</p>
+      <div class="t-user">
+        <div class="t-info">
+          <h4>Rahul Sharma</h4>
+          <span>Real Estate Developer</span>
+        </div>
+      </div>
+    </div>
+    <div class="t-card">
+      <p>"Pehle humne boost post try kiya tha par result nahi mila. AR Digital ne funnel set kiya aur hamara ROAS 4x ho gaya. Highly recommended!"</p>
+      <div class="t-user">
+        <div class="t-info">
+          <h4>Priya Verma</h4>
+          <span>E-commerce Store Owner</span>
+        </div>
+      </div>
+    </div>
+    <div class="t-card">
+      <p>"The team is very professional and transparent. We saw a significant drop in our Cost Per Lead within the first two weeks."</p>
+      <div class="t-user">
+        <div class="t-info">
+          <h4>Amit Patel</h4>
+          <span>EdTech Founder</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-container">
+    <div class="faq-item">
+      <div class="faq-question">Ad budget fee mein include hai? <span>+</span></div>
+      <div class="faq-answer">Nahi, ad budget aap directly Meta ko pay karte hain. Humari fee hamari management aur strategy services ke liye hai.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Results kitne din mein dikhne lagenge? <span>+</span></div>
+      <div class="faq-answer">Ads live hone ke 48-72 hours ke andar leads aana shuru ho jati hain. Strategy ko fully optimize hone mein 7-10 din lagte hain.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Kya aap creative design bhi karte ho? <span>+</span></div>
+      <div class="faq-answer">Haan! Humare Standard aur Elite plans mein hum high-converting ad creatives aur copy-writing bhi handle karte hain.</div>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="cta-box">
     <h2>Ready to grow your revenue?</h2>
@@ -255,6 +328,18 @@ const navBar = document.getElementById("navbar");
 const navMenu = document.getElementById("nav-menu");
 const sections = document.querySelectorAll("section, header");
 const navLinks = document.querySelectorAll("nav ul a");
+
+// FAQ Toggle Logic
+document.querySelectorAll('.faq-question').forEach(item => {
+  item.addEventListener('click', () => {
+    const parent = item.parentElement;
+    parent.classList.toggle('active');
+    // Close other FAQs
+    document.querySelectorAll('.faq-item').forEach(other => {
+      if(other !== parent) other.classList.remove('active');
+    });
+  });
+});
 
 window.addEventListener("scroll", () => {
   const scrollPos = window.scrollY;
@@ -293,6 +378,9 @@ navLinks.forEach(link => {
     navMenu.classList.remove("show");
   });
 });
+
+// Trigger scroll on load to set initial state
+window.dispatchEvent(new Event('scroll'));
 </script>
 
 </body>
