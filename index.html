@@ -5,199 +5,211 @@
   <title>DGUNiVERSE – Data-Driven Ad Agency</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    :root { --primary: #2563eb; --dark: #111827; --gray: #4b5563; --light: #f3f4f6; }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-    body { background: #f9fafb; color: var(--dark); line-height: 1.6; }
-    .container { max-width: 1100px; margin: auto; padding: 60px 20px; }
-    h2 { text-align: center; font-size: 32px; margin-bottom: 40px; }
+    :root { --primary: #2563eb; --dark: #0f172a; --accent: #38bdf8; --light: #f8fafc; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', sans-serif; }
+    body { background: #f1f5f9; color: var(--dark); line-height: 1.6; }
+    .container { max-width: 1100px; margin: auto; padding: 80px 20px; }
+    h2 { text-align: center; font-size: 36px; margin-bottom: 50px; font-weight: 800; color: var(--dark); }
 
-    /* --- ANIMATED HERO BACKGROUND --- */
+    /* --- HERO WITH ANIMATED BG --- */
     header {
-      position: relative;
-      height: 500px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #fff;
-      overflow: hidden;
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; color: #fff; overflow: hidden;
     }
-
-    /* Slideshow Logic */
     header::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-size: cover;
-      background-position: center;
-      z-index: -2;
-      animation: slideBackground 15s infinite; /* 15 seconds loop */
+      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background-size: cover; background-position: center; z-index: -2;
+      animation: slideBackground 18s infinite;
     }
-
-    /* Dark Overlay */
-    header::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.65);
-      z-index: -1;
-    }
-
+    header::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.75); z-index: -1; }
+    
     @keyframes slideBackground {
       0%, 33% { background-image: url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1350&q=80"); }
       34%, 66% { background-image: url("https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1350&q=80"); }
-      67%, 100% { background-image: url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1350&q=80"); }
+      67%, 100% { background-image: url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1350&q=80"); }
     }
-
-    header h1 { font-size: clamp(30px, 6vw, 52px); margin-bottom: 15px; z-index: 1; }
-    header p { font-size: 20px; margin-bottom: 30px; opacity: 0.9; z-index: 1; }
 
     .btn {
-      display: inline-block; padding: 14px 32px; background: var(--primary); color: #fff;
-      text-decoration: none; border-radius: 8px; font-weight: bold; transition: 0.3s;
-      z-index: 1;
+      display: inline-block; padding: 16px 36px; background: var(--primary); color: #fff;
+      text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.4s;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
     }
-    .btn:hover { transform: scale(1.05); filter: brightness(1.1); }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4); }
 
-    /* STATS BOX */
-    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; background: white; padding: 30px; border-radius: 20px; margin-top: -60px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; position: relative; z-index: 5; }
-    .stat-box h3 { font-size: 32px; color: var(--primary); }
+    /* --- STATS BOX --- */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; background: #fff; padding: 40px; border-radius: 24px; margin-top: -80px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); position: relative; z-index: 10; text-align: center; }
+    .stat-box h3 { font-size: 40px; color: var(--primary); margin-bottom: 5px; }
 
-    /* SERVICES */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
-    .card { background: #fff; padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee; }
-    .card img { width: 60px; margin-bottom: 15px; }
+    /* --- SERVICES --- */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .card { background: #fff; padding: 40px; border-radius: 20px; transition: 0.3s; border: 1px solid rgba(0,0,0,0.05); }
+    .card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+    .card img { width: 70px; margin-bottom: 20px; }
 
-    /* PROCESS */
-    .process-step { display: flex; align-items: center; margin-bottom: 20px; background: #fff; padding: 15px; border-radius: 12px; gap: 15px; }
-    .step-num { background: var(--primary); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+    /* --- PROCESS SECTION --- */
+    .process-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+    .process-card { flex: 1; min-width: 250px; background: #fff; padding: 30px; border-radius: 15px; position: relative; }
+    .process-card span { font-size: 50px; font-weight: 900; color: rgba(37, 99, 235, 0.1); position: absolute; top: 10px; right: 20px; }
 
-    /* PRICING */
-    .popular { border: 2.5px solid var(--primary); transform: scale(1.05); background: #fff; position: relative; }
-    .popular-tag { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 4px 15px; border-radius: 20px; font-size: 12px; }
-    .price { font-size: 38px; font-weight: bold; color: var(--primary); margin: 10px 0; }
-    .features { list-style: none; text-align: left; margin-bottom: 25px; font-size: 14px; flex-grow: 1;}
-    .features li::before { content: "✓ "; color: var(--primary); font-weight: bold; }
+    /* --- PRICING --- */
+    .price-card { background: #fff; padding: 50px 30px; border-radius: 24px; text-align: center; border: 1px solid #e2e8f0; }
+    .popular { border: 3px solid var(--primary); transform: scale(1.05); z-index: 5; }
+    .price-tag { font-size: 48px; font-weight: 800; color: var(--primary); margin: 20px 0; }
+    .features { list-style: none; text-align: left; margin: 30px 0; }
+    .features li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+    .features li::before { content: '✓'; color: #10b981; font-weight: 900; }
 
-    /* FAQ */
-    .faq-box { background: #fff; padding: 15px; border-radius: 10px; margin-bottom: 10px; text-align: left; }
-    .faq-box h4 { color: var(--primary); margin-bottom: 5px; }
+    /* --- FAQ --- */
+    .faq-container { max-width: 800px; margin: auto; }
+    .faq-item { background: #fff; margin-bottom: 15px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+    .faq-question { width: 100%; padding: 25px; background: none; border: none; text-align: left; font-size: 18px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--dark); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding: 0 25px; color: #64748b; }
+    .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 25px; }
 
-    /* FOOTER & WHATSAPP */
-    footer { background: var(--dark); color: #9ca3af; text-align: center; padding: 50px 20px; margin-top: 50px;}
-    .whatsapp-float { position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; z-index: 1000; transition: 0.3s; }
+    /* --- FOOTER --- */
+    footer { background: var(--dark); color: #94a3b8; padding: 80px 20px 40px; text-align: center; }
+    .footer-content { max-width: 1100px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; }
+    .footer-logo h2 { color: #fff; text-align: left; margin-bottom: 15px; }
 
-    @media (max-width: 1024px) { .popular { transform: scale(1); } }
+    .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 65px; z-index: 1000; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); }
+
+    @media (max-width: 768px) { .popular { transform: scale(1); } header { height: auto; padding: 120px 20px; } }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>DGUNiVERSE</h1>
-  <p>Technical & Data-Driven Ads Management Agency</p>
-  <a class="btn" href="https://wa.me/919301458329">Free Consultation Call</a>
+  <h1 style="letter-spacing: -1px;">DGUNiVERSE</h1>
+  <p>Technical Media Buying & Growth Engineering</p>
+  <a class="btn" href="https://wa.me/919301458329">Consult With An Expert</a>
 </header>
 
 <div class="container">
   <div class="stats">
-    <div class="stat-box"><h3>500+</h3><p>Leads Generated</p></div>
-    <div class="stat-box"><h3>3X+</h3><p>Average ROI</p></div>
-    <div class="stat-box"><h3>100%</h3><p>Data-Focused</p></div>
+    <div class="stat-box"><h3>₹50K+</h3><p>Ad Spend Managed</p></div>
+    <div class="stat-box"><h3>500+</h3><p>Qualified Leads</p></div>
+    <div class="stat-box"><h3>3.5X</h3><p>Avg. ROAS</p></div>
   </div>
 
-  <section style="margin-top: 80px;">
-    <h2>Expert Ad Services</h2>
-    <div class="grid">
-      <div class="card"><img src="https://img.icons8.com/color/96/facebook-new.png"><h3>Facebook Ads</h3><p>Targeted campaigns for maximum leads.</p></div>
-      <div class="card"><img src="https://img.icons8.com/color/96/instagram-new.png"><h3>Instagram Ads</h3><p>Powerful creatives for brand growth.</p></div>
-      <div class="card"><img src="https://img.icons8.com/color/96/bullseye.png"><h3>Lead Gen</h3><p>Focused on getting you paying customers.</p></div>
-    </div>
-  </section>
-
-  <section style="margin-top: 80px;">
-    <h2>Our Simple Process</h2>
-    <div style="max-width: 650px; margin: auto;">
-      <div class="process-step"><div class="step-num">1</div><div><h4>Analysis</h4><p>Hum aapke business aur competition ko analyze karte hain.</p></div></div>
-      <div class="process-step"><div class="step-num">2</div><div><h4>Launch</h4><p>High-converting ads aur precise targeting setup.</p></div></div>
-      <div class="process-step"><div class="step-num">3</div><div><h4>Scale</h4><p>Daily performance check aur results ko improve karna.</p></div></div>
-    </div>
-  </section>
-
-  <section style="margin-top: 80px;">
-    <h2>Growth Plans</h2>
+  <section style="margin-top: 100px;">
+    <h2>High-Impact Solutions</h2>
     <div class="grid">
       <div class="card">
+        <img src="https://img.icons8.com/color/96/facebook-new.png">
+        <h3>Precision FB Ads</h3>
+        <p>Advanced pixel integration aur custom conversion tracking ke saath hum aapke budget ka har ek paisa optimize karte hain.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/color/96/instagram-new.png">
+        <h3>Instagram Growth</h3>
+        <p>Viral creatives aur targeted placement jo aapke brand ko sirf "likes" nahi, balki "paying customers" dilata hai.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/color/96/bullseye.png">
+        <h3>Lead Funnels</h3>
+        <p>Hum sirf ads nahi chalate, hum lead capture funnels banate hain taaki aapka sales team hamesha busy rahe.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top: 100px;">
+    <h2>The Success Framework</h2>
+    <div class="process-container">
+      <div class="process-card"><span>01</span><h4>Technical Audit</h4><p>Hum aapke product aur market data ko analyze karke winning strategy banate hain.</p></div>
+      <div class="process-card"><span>02</span><h4>Ad Architecture</h4><p>High-converting creatives aur targeted audience sets ka launch.</p></div>
+      <div class="process-card"><span>03</span><h4>Scale & ROAS</h4><p>Data ko analyze karke hum successful ads ko scale karte hain.</p></div>
+    </div>
+  </section>
+
+  <section style="margin-top: 100px;">
+    <h2>Performance Based Plans</h2>
+    <div class="grid">
+      <div class="price-card">
         <h3>Starter</h3>
-        <div class="price">₹2,999</div>
+        <div class="price-tag">₹2,999</div>
         <ul class="features">
-          <li>Campaign Setup</li>
-          <li>Audience Research</li>
-          <li>Weekly Report</li>
-          <li>WhatsApp Support</li>
+          <li>Basic Campaign Setup</li>
+          <li>Core Audience Targeting</li>
+          <li>Weekly Performance Call</li>
+          <li>Standard Support</li>
         </ul>
-        <a class="btn" style="width:100%" href="https://wa.me/919301458329?text=Starter%20Plan">Get Started</a>
+        <a class="btn" style="width:100%" href="https://wa.me/919301458329?text=Starter%20Inquiry">Start Growing</a>
       </div>
-      <div class="card popular">
-        <div class="popular-tag">MOST POPULAR</div>
+      <div class="price-card popular">
         <h3>Standard</h3>
-        <div class="price">₹5,000</div>
+        <div class="price-tag">₹5,000</div>
         <ul class="features">
-          <li>FB + Instagram Ads</li>
-          <li>Daily Optimization</li>
-          <li>Retargeting Ads</li>
-          <li>Priority Support</li>
+          <li>FB + IG Full Mgmt</li>
+          <li>A/B Split Testing</li>
+          <li>Daily Budget Optimization</li>
+          <li>Advanced Retargeting</li>
         </ul>
-        <a class="btn" style="width:100%" href="https://wa.me/919301458329?text=Standard%20Plan">Get Started</a>
+        <a class="btn" style="width:100%" href="https://wa.me/919301458329?text=Standard%20Inquiry">Scale Now</a>
       </div>
-      <div class="card">
-        <h3>Business</h3>
-        <div class="price">₹9,999</div>
+      <div class="price-card">
+        <h3>Elite</h3>
+        <div class="price-tag">₹9,999</div>
         <ul class="features">
-          <li>Lead Gen Funnels</li>
-          <li>Sales Campaigns</li>
-          <li>Retargeting Strategy</li>
-          <li>24/7 Priority Support</li>
+          <li>Full Funnel Strategy</li>
+          <li>Lead Capture Advice</li>
+          <li>Competitor Spy Reports</li>
+          <li>24/7 VIP Priority</li>
         </ul>
-        <a class="btn" style="width:100%" href="https://wa.me/919301458329?text=Business%20Plan">Get Started</a>
-      </div>
-    </div>
-    <p style="text-align:center; color:red; margin-top:20px;"><b>Hurry:</b> Only 3 slots left for this month!</p>
-  </section>
-
-  <section style="margin-top: 80px;">
-    <h2>Client Success Stories</h2>
-    <div class="grid">
-      <div class="card" style="text-align:left;">
-        <div style="color:#fbbf24; margin-bottom:5px;">★★★★★</div>
-        <p>"DGUNiVERSE ne 1 hafte mein 50+ leads di. Results kamaal ke hain!"</p>
-        <p style="margin-top:10px; font-weight:bold;">- Rahul Sharma</p>
-      </div>
-      <div class="card" style="text-align:left;">
-        <div style="color:#fbbf24; margin-bottom:5px;">★★★★★</div>
-        <p>"Inka data-driven approach best hai. Humara ROI 3x badh gaya hai."</p>
-        <p style="margin-top:10px; font-weight:bold;">- Anjali Gupta</p>
+        <a class="btn" style="width:100%" href="https://wa.me/919301458329?text=Elite%20Inquiry">Dominte Market</a>
       </div>
     </div>
   </section>
 
-  <section style="margin-top: 80px; text-align: center;">
-    <h2>FAQs</h2>
-    <div style="max-width: 700px; margin: auto;">
-      <div class="faq-box"><h4>Budget kitna chahiye?</h4><p>Aap ₹200-₹500 daily budget se start kar sakte hain.</p></div>
-      <div class="faq-box"><h4>Results kab milenge?</h4><p>Ads live hone ke 48 hours ke andar leads aana shuru ho jati hain.</p></div>
+  <section style="margin-top: 100px;">
+    <h2>Intelligence Hub (FAQs)</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <button class="faq-question">Ads ka kharcha kaisa hoga? <span>+</span></button>
+        <div class="faq-answer"><p>Aap ₹200-₹500 daily se start kar sakte hain. Ad budget direct Meta ko jata hai, hamari fee management ke liye hai.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Kya main kabhi bhi cancel kar sakta hoon? <span>+</span></button>
+        <div class="faq-answer"><p>Haan, DGUNiVERSE mein koi long-term contract nahi hai. Hum results par kaam karte hain, results pasand na aaye toh aap cancel kar sakte hain.</p></div>
+      </div>
     </div>
   </section>
 </div>
 
 <footer>
-  <p>© 2025 DGUNiVERSE – Data-Driven Agency</p>
-  <p>Contact: +91 9301458329</p>
+  <div class="footer-content">
+    <div class="footer-logo">
+      <h2>DGUNiVERSE</h2>
+      <p>Bridging the gap between Technology and Marketing. Technical expertise meets creative growth.</p>
+    </div>
+    <div>
+      <h4 style="color:#fff; margin-bottom:15px;">Services</h4>
+      <p>Performance Ads</p>
+      <p>Lead Generation</p>
+      <p>Conversion Tracking</p>
+    </div>
+    <div>
+      <h4 style="color:#fff; margin-bottom:15px;">Contact</h4>
+      <p>WhatsApp: +91 9301458329</p>
+      <p>Email: contact@dguniverse.com</p>
+    </div>
+  </div>
+  <p style="margin-top:40px; font-size:14px;">© 2025 DGUNiVERSE Digital Growth Agency. All Rights Reserved.</p>
 </footer>
 
-<a href="https://wa.me/919301458329" class="whatsapp-float" target="_blank">
+<a href="https://wa.me/919301458329" class="whatsapp-float">
   <img src="https://img.icons8.com/color/96/whatsapp--v1.png" width="100%">
 </a>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+      const item = button.parentElement;
+      item.classList.toggle('active');
+      button.querySelector('span').innerText = item.classList.contains('active') ? '−' : '+';
+    });
+  });
+</script>
 
 </body>
 </html>
